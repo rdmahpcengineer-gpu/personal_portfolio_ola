@@ -27,12 +27,12 @@ export default function App() {
   ];
 
   const portfolioItems = [
-    { id: 1, title: "EHCx", category: "AI-NATIVE CCaaS", image: "https://picsum.photos/seed/abstract/800/1000", alt: "EHCx platform architecture visualization" },
-    { id: 2, title: "SkyDock.ai", category: "ROBOTIC LAST-MILE-DELIVERY", image: "https://picsum.photos/seed/urban/800/600", alt: "SkyDock.ai robotic last-mile-delivery" },
-    { id: 3, title: "aicollege.cloud", category: "AI-NATIVE EDUCATION", image: "https://picsum.photos/seed/natural/800/1200", alt: "aicollege.cloud course interface" },
-    { id: 4, title: "Harness Engineering", category: "METHODOLOGY", image: "https://picsum.photos/seed/void/800/800", alt: "Multi-agent harness architecture diagram" },
-    { id: 5, title: "GPU Infrastructure", category: "HPC / RDMA", image: "https://picsum.photos/seed/symmetry/800/1000", alt: "NVIDIA GPU cluster infrastructure" },
-    { id: 6, title: "StateForge", category: "MULTIMODAL DEV ENGINE", image: "https://picsum.photos/seed/ethereal/800/700", alt: "StateForge video-to-app engine" },
+    { id: 1, title: "EHCx", category: "AI-NATIVE CCaaS", image: "/01_ehcx_ccaas.png", alt: "EHCx platform architecture visualization" },
+    { id: 2, title: "SkyDock.ai", category: "ROBOTIC LAST-MILE-DELIVERY", image: "/02_skydock.png", alt: "SkyDock.ai robotic last-mile-delivery" },
+    { id: 3, title: "aicollege.cloud", category: "AI-NATIVE EDUCATION", image: "/03_aicollege.png", alt: "aicollege.cloud course interface" },
+    { id: 4, title: "Harness Engineering", category: "METHODOLOGY", image: "/04_harness_engineering.png", alt: "Multi-agent harness architecture diagram" },
+    { id: 5, title: "GPU Infrastructure", category: "HPC / RDMA", image: "/05_gpu_infrastructure.png", alt: "NVIDIA GPU cluster infrastructure" },
+    { id: 6, title: "StateForge", category: "MULTIMODAL DEV ENGINE", image: "/06_stateforge.png", alt: "StateForge video-to-app engine" },
   ];
 
   return (
