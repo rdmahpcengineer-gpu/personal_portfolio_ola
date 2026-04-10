@@ -29,3 +29,18 @@
 .writing-vertical-rl {
   writing-mode: vertical-rl;
 }
+
+/* Hero profile image — soft blended edges + floating elevation */
+.hero-image-container {
+  filter: drop-shadow(0 24px 48px rgba(10, 10, 10, 0.18))
+          drop-shadow(0 8px 16px rgba(10, 10, 10, 0.12));
+}
+
+.hero-profile-img {
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%),
+              linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%),
+                      linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}

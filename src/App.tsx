@@ -3,23 +3,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import { motion } from "motion/react";
-import { 
-  Instagram, 
-  Twitter, 
-  Linkedin, 
-  Github, 
-  ArrowRight, 
-  Menu, 
+import {
+  Linkedin,
+  Github,
+  ArrowRight,
+  Menu,
   X,
   Mail,
   MapPin,
-  Phone
+  Twitter
 } from "lucide-react";
 import { useState } from "react";
 
@@ -28,17 +21,17 @@ export default function App() {
 
   const navLinks = [
     { name: "About", href: "#about" },
-    { name: "Portfolio", href: "#portfolio" },
+    { name: "Ventures", href: "#portfolio" },
     { name: "Contact", href: "#contact" },
   ];
 
   const portfolioItems = [
-    { id: 1, title: "Abstract Forms", category: "Photography", image: "https://picsum.photos/seed/abstract/800/1000" },
-    { id: 2, title: "Urban Silence", category: "Architecture", image: "https://picsum.photos/seed/urban/800/600" },
-    { id: 3, title: "Natural Light", category: "Portrait", image: "https://picsum.photos/seed/natural/800/1200" },
-    { id: 4, title: "The Void", category: "Minimalism", image: "https://picsum.photos/seed/void/800/800" },
-    { id: 5, title: "Symmetry", category: "Design", image: "https://picsum.photos/seed/symmetry/800/1000" },
-    { id: 6, title: "Ethereal", category: "Art", image: "https://picsum.photos/seed/ethereal/800/700" },
+    { id: 1, title: "EHCx", category: "AI-NATIVE CCaaS", image: "https://picsum.photos/seed/abstract/800/1000", alt: "EHCx platform architecture visualization" },
+    { id: 2, title: "AutoPlaceAI", category: "AGENTIC JOB PLACEMENT", image: "https://picsum.photos/seed/urban/800/600", alt: "Skydock robotic last-mile-delivery" },
+    { id: 3, title: "aicollege.cloud", category: "AI-NATIVE EDUCATION", image: "https://picsum.photos/seed/natural/800/1200", alt: "aicollege.cloud course interface" },
+    { id: 4, title: "Harness Engineering", category: "METHODOLOGY", image: "https://picsum.photos/seed/void/800/800", alt: "Multi-agent harness architecture diagram" },
+    { id: 5, title: "GPU Infrastructure", category: "HPC / RDMA", image: "https://picsum.photos/seed/symmetry/800/1000", alt: "NVIDIA GPU cluster infrastructure" },
+    { id: 6, title: "StateForge", category: "MULTIMODAL DEV ENGINE", image: "https://picsum.photos/seed/ethereal/800/700", alt: "StateForge video-to-app engine" },
   ];
 
   return (
@@ -46,44 +39,28 @@ export default function App() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 w-full z-50 bg-brand-white/80 backdrop-blur-md border-b border-brand-black/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <motion.a 
-            href="#" 
+          <motion.a
+            href="#"
             className="text-2xl font-serif font-bold tracking-tighter"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
           >
-            PORTFOLIO.
+            ELEVENTH HOUSE
           </motion.a>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex space-x-12">
-            {navLinks.map((link, i) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                className="text-sm uppercase tracking-widest font-medium hover:text-brand-gray transition-colors"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-              >
-                {link.name}
-              </motion.a>
-            ))}
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <button 
-            className="md:hidden p-2"
+          {/* Menu Toggle */}
+          <button
+            className="p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        {/* Mobile Nav */}
+        {/* Slide-down Nav */}
         {isMenuOpen && (
-          <motion.div 
-            className="md:hidden absolute top-full left-0 w-full bg-brand-white border-b border-brand-black/5 p-6 flex flex-col space-y-4"
+          <motion.div
+            className="absolute top-full left-0 w-full bg-brand-white border-b border-brand-black/5 p-6 flex flex-col space-y-4"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -101,63 +78,100 @@ export default function App() {
         )}
       </nav>
 
-      {/* Hero Section - Inspired by input_file_1.png */}
+      {/* Hero Section */}
       <section className="relative h-screen flex items-center overflow-hidden pt-20">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="input_file_1.png" 
-            alt="Hero Background" 
+          <img
+            src="input_file_1.png"
+            alt="Hero Background"
             className="w-full h-full object-cover opacity-90 grayscale"
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-brand-white via-brand-white/40 to-transparent"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full flex items-center justify-between">
+          {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex-shrink-0 max-w-xl lg:max-w-2xl"
           >
             <span className="text-xs uppercase tracking-[0.4em] font-semibold text-brand-gray mb-4 block">
-              Creative Director & Photographer
+              Systems Architect & AI Infrastructure Founder
             </span>
             <h1 className="text-7xl md:text-[10rem] font-serif leading-[0.85] tracking-tighter mb-8">
-              Visual <br />
-              <span className="text-stroke italic">Storyteller</span>
+              Ola<br />
+              <span className="text-stroke italic">McCartney</span>
             </h1>
             <p className="max-w-md text-lg text-brand-gray leading-relaxed mb-10">
-              Capturing the essence of moments through a minimalist lens. Based in London, working worldwide.
+              Building the intelligence layer between GPU infrastructure and the platforms enterprises already use. From the metal up, not the API down.
             </p>
             <div className="flex space-x-6">
-              <a 
-                href="#portfolio" 
+              <a
+                href="#portfolio"
                 className="bg-brand-black text-brand-white px-8 py-4 rounded-full flex items-center space-x-3 hover:bg-brand-gray transition-all"
               >
-                <span>View Work</span>
+                <span>View Ventures</span>
                 <ArrowRight size={18} />
               </a>
               <div className="flex items-center space-x-4">
                 <a href="#" className="p-3 border border-brand-black/10 rounded-full hover:bg-brand-black hover:text-brand-white transition-all">
-                  <Instagram size={20} />
+                  <Github size={20} />
                 </a>
                 <a href="#" className="p-3 border border-brand-black/10 rounded-full hover:bg-brand-black hover:text-brand-white transition-all">
-                  <Twitter size={20} />
+                  <Linkedin size={20} />
                 </a>
               </div>
             </div>
           </motion.div>
+
+          {/* Right - Hero Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 60, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+            className="hidden md:block flex-shrink-0 relative ml-8 lg:ml-16"
+          >
+            <div className="hero-image-container relative w-[280px] h-[360px] lg:w-[400px] lg:h-[500px] xl:w-[480px] xl:h-[580px]">
+              <img
+                src="/hero-profile.png"
+                alt="Ola McCartney"
+                className="hero-profile-img w-full h-full object-cover object-top rounded-3xl"
+              />
+              {/* Floating elevation shadow */}
+              <div className="absolute -inset-4 -z-10 bg-brand-black/8 rounded-[2rem] blur-2xl"></div>
+            </div>
+          </motion.div>
         </div>
 
-        {/* Side Rail Text - Inspired by Recipe 11 */}
+        {/* Mobile Hero Profile */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="md:hidden absolute bottom-6 right-4 z-10"
+        >
+          <div className="hero-image-container relative w-[160px] h-[210px]">
+            <img
+              src="/hero-profile.png"
+              alt="Ola McCartney"
+              className="hero-profile-img w-full h-full object-cover object-top rounded-2xl"
+            />
+            <div className="absolute -inset-3 -z-10 bg-brand-black/8 rounded-[1.5rem] blur-xl"></div>
+          </div>
+        </motion.div>
+
+        {/* Side Rail Text */}
         <div className="hidden lg:block absolute right-12 top-1/2 -translate-y-1/2">
           <div className="writing-vertical-rl rotate-180 text-[10px] uppercase tracking-[0.5em] text-brand-gray/40 font-bold">
-            ESTABLISHED • TWENTY TWENTY SIX • PORTFOLIO
+            OPEN TO STRATEGIC PARTNERSHIPS
           </div>
         </div>
       </section>
 
-      {/* About Section - Using input_file_2.png */}
+      {/* About Section */}
       <section id="about" className="py-32 bg-brand-black text-brand-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -169,9 +183,9 @@ export default function App() {
               className="relative"
             >
               <div className="aspect-[4/5] overflow-hidden rounded-2xl">
-                <img 
-                  src="input_file_2.png" 
-                  alt="About Me" 
+                <img
+                  src="input_file_2.png"
+                  alt="Ola McCartney — Founder, Eleventh House AI Cx"
                   className="w-full h-full object-cover grayscale hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
@@ -185,24 +199,24 @@ export default function App() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-5xl font-serif mb-8">The Man Behind <br /><span className="italic">The Lens</span></h2>
+              <h2 className="text-5xl font-serif mb-8">The Architect Behind <br /><span className="italic">The Infrastructure</span></h2>
               <div className="space-y-6 text-brand-gray text-lg leading-relaxed">
                 <p>
-                  I believe that every image tells a story, and every story deserves to be told with clarity and emotion. My work is a reflection of my fascination with the interplay of light, shadow, and human connection.
+                  I design AI systems where GPU-accelerated compute is the intelligence core and legacy platforms — telecomms, telephony, CRMs, LMS, booking engines — become downstream actuators. My background in RDMA/HPC networking means I think about AI from InfiniBand and GPUDirect up through multi-agent orchestration.
                 </p>
                 <p>
-                  With over a decade of experience in visual arts, I've collaborated with global brands and individual visionaries to bring their stories to life through compelling imagery.
+                  As a solo technical founder, architect, build with pending patents in vertical industries, including last-mile-delivery robotic integrated systems. Production systems and cloud based zero touch agentic contact center, end-to-end — from infrastructure code and Data models to event centric ai dashboards and real-time human-like voice pipelines. Every compounded venture shares one thesis: the harness around the model matters more than the model itself.
                 </p>
               </div>
-              
+
               <div className="mt-12 grid grid-cols-2 gap-8">
                 <div>
-                  <h4 className="text-brand-white font-bold mb-2">Exhibitions</h4>
-                  <p className="text-sm text-brand-gray">London, Paris, New York, Tokyo</p>
+                  <h4 className="text-brand-white font-bold mb-2">Certifications</h4>
+                  <p className="text-sm text-brand-gray">NVIDIA NCP · NVIDIA NCA · AWS-</p>
                 </div>
                 <div>
-                  <h4 className="text-brand-white font-bold mb-2">Awards</h4>
-                  <p className="text-sm text-brand-gray">Visual Arts Excellence 2025</p>
+                  <h4 className="text-brand-white font-bold mb-2">Operating From</h4>
+                  <p className="text-sm text-brand-gray">New York · Dallas/Frisco, TX</p>
                 </div>
               </div>
             </motion.div>
@@ -210,16 +224,16 @@ export default function App() {
         </div>
       </section>
 
-      {/* Portfolio Section - Inspired by input_file_0.png */}
+      {/* Portfolio Section */}
       <section id="portfolio" className="py-32 bg-brand-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-20">
             <div>
-              <span className="text-xs uppercase tracking-[0.3em] font-bold text-brand-gray mb-4 block">Selected Works</span>
+              <span className="text-xs uppercase tracking-[0.3em] font-bold text-brand-gray mb-4 block">Active Ventures</span>
               <h2 className="text-6xl font-serif">Portfolio.</h2>
             </div>
             <p className="max-w-xs text-brand-gray text-sm mt-6 md:mt-0">
-              A curated collection of projects that define my visual language and technical approach.
+              A portfolio of AI-native platforms, each inverting the traditional software model — GPU infrastructure as the brain, legacy systems as connectors.
             </p>
           </div>
 
@@ -234,15 +248,16 @@ export default function App() {
                 transition={{ delay: i * 0.1 }}
               >
                 <div className="relative aspect-[3/4] overflow-hidden bg-brand-black/5 mb-6">
-                  <img 
-                    src={item.image} 
-                    alt={item.title} 
+                  <img
+                    src={item.image}
+                    alt={item.alt}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-brand-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span className="bg-brand-white text-brand-black px-6 py-2 rounded-full text-xs uppercase tracking-widest font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                      View Project
+                    <span className="bg-brand-white text-brand-black px-6 py-2 rounded-full text-xs uppercase tracking-widest font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform flex items-center space-x-2">
+                      <span>View</span>
+                      <ArrowRight size={14} />
                     </span>
                   </div>
                 </div>
@@ -257,34 +272,35 @@ export default function App() {
             ))}
           </div>
 
-          {/* Background Image Reference - input_file_0.png */}
+          {/* Quote / Technical Foundation */}
           <div className="mt-32 relative h-[60vh] overflow-hidden rounded-3xl">
-            <img 
-              src="input_file_0.png" 
-              alt="Portfolio Context" 
+            <img
+              src="input_file_0.png"
+              alt="Technical Foundation"
               className="w-full h-full object-cover grayscale opacity-30"
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 flex items-center justify-center text-center p-6">
               <div className="max-w-2xl">
-                <h3 className="text-4xl md:text-5xl font-serif mb-6">"Simplicity is the ultimate sophistication."</h3>
-                <p className="text-brand-gray italic">— Leonardo da Vinci</p>
+                <h3 className="text-4xl md:text-5xl font-serif mb-6">"The bottleneck is never the model — it's the system around it."</h3>
+                <p className="text-brand-gray italic">— Harness Engineering Principle</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Footer / Contact Section */}
       <section id="contact" className="py-32 bg-brand-black text-brand-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
             <div>
-              <h2 className="text-6xl font-serif mb-8">Get in <br /><span className="italic">Touch.</span></h2>
+              <span className="text-sm uppercase tracking-[0.3em] font-bold text-brand-gray/60 mb-6 block">ELEVENTH HOUSE AI.</span>
+              <h2 className="text-6xl font-serif mb-8">Let's <br /><span className="italic">Build.</span></h2>
               <p className="text-brand-gray text-lg mb-12 max-w-md">
-                Have a project in mind or just want to say hello? I'd love to hear from you.
+                Exploring investment, partnership, or want to talk infrastructure? I'd like to hear from you.
               </p>
-              
+
               <div className="space-y-8">
                 <div className="flex items-center space-x-6">
                   <div className="w-12 h-12 rounded-full border border-brand-white/10 flex items-center justify-center">
@@ -292,7 +308,7 @@ export default function App() {
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-brand-gray">Email</p>
-                    <p className="text-lg">hello@portfolio.com</p>
+                    <p className="text-lg">ola.mccartney@eleventhhouse.ai</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-6">
@@ -301,10 +317,17 @@ export default function App() {
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-brand-gray">Location</p>
-                    <p className="text-lg">London, United Kingdom</p>
+                    <p className="text-lg">New York · Dallas, Texas</p>
                   </div>
                 </div>
               </div>
+
+              {/* Footer Nav Links */}
+              <nav className="mt-12 flex space-x-8">
+                <a href="#about" className="text-xs uppercase tracking-widest text-brand-gray hover:text-brand-white transition-colors">About</a>
+                <a href="#portfolio" className="text-xs uppercase tracking-widest text-brand-gray hover:text-brand-white transition-colors">Ventures</a>
+                <a href="#contact" className="text-xs uppercase tracking-widest text-brand-gray hover:text-brand-white transition-colors">Contact</a>
+              </nav>
             </div>
 
             <motion.div
@@ -317,26 +340,26 @@ export default function App() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest font-bold text-brand-gray">Name</label>
-                    <input 
-                      type="text" 
-                      placeholder="John Doe"
+                    <input
+                      type="text"
+                      placeholder="Jane Smith"
                       className="w-full bg-transparent border-b border-brand-white/20 py-3 focus:border-brand-white outline-none transition-colors"
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs uppercase tracking-widest font-bold text-brand-gray">Email</label>
-                    <input 
-                      type="email" 
-                      placeholder="john@example.com"
+                    <input
+                      type="email"
+                      placeholder="jane@firm.com"
                       className="w-full bg-transparent border-b border-brand-white/20 py-3 focus:border-brand-white outline-none transition-colors"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs uppercase tracking-widest font-bold text-brand-gray">Message</label>
-                  <textarea 
+                  <textarea
                     rows={4}
-                    placeholder="Tell me about your project..."
+                    placeholder="Tell me what you're working on..."
                     className="w-full bg-transparent border-b border-brand-white/20 py-3 focus:border-brand-white outline-none transition-colors resize-none"
                   ></textarea>
                 </div>
@@ -349,17 +372,16 @@ export default function App() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer Bottom Bar */}
       <footer className="py-12 bg-brand-black border-t border-brand-white/5">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-brand-gray text-sm mb-6 md:mb-0">
-            © 2026 Portfolio Showcase. All rights reserved.
+            © 2026 Eleventh House AI. All rights reserved.
           </p>
           <div className="flex space-x-8">
-            <a href="#" className="text-brand-gray hover:text-brand-white transition-colors"><Instagram size={20} /></a>
-            <a href="#" className="text-brand-gray hover:text-brand-white transition-colors"><Twitter size={20} /></a>
-            <a href="#" className="text-brand-gray hover:text-brand-white transition-colors"><Linkedin size={20} /></a>
             <a href="#" className="text-brand-gray hover:text-brand-white transition-colors"><Github size={20} /></a>
+            <a href="#" className="text-brand-gray hover:text-brand-white transition-colors"><Linkedin size={20} /></a>
+            <a href="#" className="text-brand-gray hover:text-brand-white transition-colors"><Twitter size={20} /></a>
           </div>
         </div>
       </footer>
