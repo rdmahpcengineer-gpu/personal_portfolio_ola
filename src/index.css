@@ -44,3 +44,325 @@
                       linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   -webkit-mask-composite: source-in;
 }
+
+/* ═══════════════════════════════════════════
+   Retro Mechanical Flip Clock
+   Modelled after physical split-flap hardware
+   ═══════════════════════════════════════════ */
+
+/* Outer housing — the black shell */
+.fc-housing {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 40px;          /* room for stand */
+}
+
+/* Clock body — rounded black casing */
+.fc-body {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #111;
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow:
+    0 2px 0 #222 inset,
+    0 -1px 0 #000 inset,
+    0 8px 30px rgba(0,0,0,0.7),
+    0 2px 6px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .fc-body {
+    gap: 8px;
+    padding: 20px 24px;
+    border-radius: 18px;
+  }
+}
+
+/* Digit pair wrapper */
+.fc-pair {
+  display: flex;
+  gap: 3px;
+}
+
+@media (min-width: 768px) {
+  .fc-pair { gap: 4px; }
+}
+
+/* ── Individual flip card ── */
+.fc-card {
+  position: relative;
+  width: 48px;
+  height: 68px;
+  perspective: 500px;
+}
+
+@media (min-width: 768px) {
+  .fc-card {
+    width: 64px;
+    height: 90px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fc-card {
+    width: 76px;
+    height: 106px;
+  }
+}
+
+/* Shared digit typography */
+.fc-card span {
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 2.25rem;
+  color: #0a0a0a;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .fc-card span { font-size: 3.25rem; }
+}
+@media (min-width: 1024px) {
+  .fc-card span { font-size: 3.75rem; }
+}
+
+/* Static halves — always visible behind flaps */
+.fc-static-top,
+.fc-static-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.fc-static-top {
+  top: 0;
+  background: #f5f5f0;
+  border-radius: 8px 8px 0 0;
+}
+
+.fc-static-bottom {
+  bottom: 0;
+  background: #eaeae5;
+  border-radius: 0 0 8px 8px;
+}
+
+.fc-static-top span {
+  position: absolute;
+  width: 100%;
+  height: 200%;
+  top: 0;
+}
+
+.fc-static-bottom span {
+  position: absolute;
+  width: 100%;
+  height: 200%;
+  bottom: 0;
+}
+
+/* Animated top flap — old digit, falls forward */
+.fc-flap-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: #f5f5f0;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  transform-origin: bottom center;
+  backface-visibility: hidden;
+  z-index: 4;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.fc-flap-top span {
+  position: absolute;
+  width: 100%;
+  height: 200%;
+  top: 0;
+}
+
+/* Animated bottom flap — new digit, swings down */
+.fc-flap-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: #eaeae5;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  transform-origin: top center;
+  backface-visibility: hidden;
+  z-index: 3;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.fc-flap-bottom span {
+  position: absolute;
+  width: 100%;
+  height: 200%;
+  bottom: 0;
+}
+
+/* Center axle / split line */
+.fc-axle {
+  position: absolute;
+  top: 50%;
+  left: -2px;
+  right: -2px;
+  height: 2px;
+  background: #333;
+  z-index: 10;
+  transform: translateY(-50%);
+  border-radius: 1px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* ── Colon separator ── */
+.fc-colon {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 2px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .fc-colon { gap: 14px; padding: 0 4px; }
+}
+
+.fc-colon span {
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: #555;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(255,255,255,0.05);
+}
+
+@media (min-width: 768px) {
+  .fc-colon span { width: 8px; height: 8px; }
+}
+
+/* ── Gear decorations (side wheels) ── */
+.fc-gear {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  width: 28px;
+  height: 28px;
+  z-index: 3;
+}
+
+@media (min-width: 768px) {
+  .fc-gear { width: 36px; height: 36px; }
+}
+
+.fc-gear-left { left: -6px; }
+.fc-gear-right { right: -6px; }
+
+@media (min-width: 768px) {
+  .fc-gear-left { left: -10px; }
+  .fc-gear-right { right: -10px; }
+}
+
+.fc-gear-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #222 0deg, #333 15deg, #222 30deg, #333 45deg,
+    #222 60deg, #333 75deg, #222 90deg, #333 105deg,
+    #222 120deg, #333 135deg, #222 150deg, #333 165deg,
+    #222 180deg, #333 195deg, #222 210deg, #333 225deg,
+    #222 240deg, #333 255deg, #222 270deg, #333 285deg,
+    #222 300deg, #333 315deg, #222 330deg, #333 345deg,
+    #222 360deg
+  );
+  box-shadow:
+    0 0 0 3px #111,
+    0 0 0 5px #1a1a1a,
+    inset 0 0 6px rgba(0,0,0,0.8);
+  position: relative;
+}
+
+.fc-gear-inner::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: #0a0a0a;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.1);
+}
+
+@media (min-width: 768px) {
+  .fc-gear-inner::after { width: 10px; height: 10px; }
+}
+
+/* ── Stand / base ── */
+.fc-stand {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}
+
+.fc-pillar {
+  position: absolute;
+  width: 6px;
+  height: 32px;
+  background: linear-gradient(to right, #1a1a1a, #2a2a2a, #1a1a1a);
+  border-radius: 2px;
+  bottom: 8px;
+}
+
+.fc-pillar-left { left: -28px; }
+.fc-pillar-right { right: -28px; }
+
+@media (min-width: 768px) {
+  .fc-pillar { width: 8px; height: 38px; }
+  .fc-pillar-left { left: -36px; }
+  .fc-pillar-right { right: -36px; }
+}
+
+.fc-base {
+  width: 100px;
+  height: 10px;
+  background: linear-gradient(to bottom, #3a2a1a, #2a1c10);
+  border-radius: 3px;
+  margin-top: auto;
+  position: relative;
+  bottom: 0;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.5),
+    0 1px 0 rgba(255,255,255,0.05) inset;
+}
+
+@media (min-width: 768px) {
+  .fc-base { width: 130px; height: 12px; border-radius: 4px; }
+}

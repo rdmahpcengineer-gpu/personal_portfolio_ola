@@ -15,6 +15,7 @@ import {
   Twitter
 } from "lucide-react";
 import { useState } from "react";
+import FlipClock from "./FlipClock";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,7 +28,7 @@ export default function App() {
 
   const portfolioItems = [
     { id: 1, title: "EHCx", category: "AI-NATIVE CCaaS", image: "https://picsum.photos/seed/abstract/800/1000", alt: "EHCx platform architecture visualization" },
-    { id: 2, title: "AutoPlaceAI", category: "AGENTIC JOB PLACEMENT", image: "https://picsum.photos/seed/urban/800/600", alt: "Skydock robotic last-mile-delivery" },
+    { id: 2, title: "SkyDock.ai", category: "ROBOTIC LAST-MILE-DELIVERY", image: "https://picsum.photos/seed/urban/800/600", alt: "SkyDock.ai robotic last-mile-delivery" },
     { id: 3, title: "aicollege.cloud", category: "AI-NATIVE EDUCATION", image: "https://picsum.photos/seed/natural/800/1200", alt: "aicollege.cloud course interface" },
     { id: 4, title: "Harness Engineering", category: "METHODOLOGY", image: "https://picsum.photos/seed/void/800/800", alt: "Multi-agent harness architecture diagram" },
     { id: 5, title: "GPU Infrastructure", category: "HPC / RDMA", image: "https://picsum.photos/seed/symmetry/800/1000", alt: "NVIDIA GPU cluster infrastructure" },
@@ -117,10 +118,10 @@ export default function App() {
                 <ArrowRight size={18} />
               </a>
               <div className="flex items-center space-x-4">
-                <a href="#" className="p-3 border border-brand-black/10 rounded-full hover:bg-brand-black hover:text-brand-white transition-all">
+                <a href="https://github.com/rdmahpcengineer-gpu" target="_blank" rel="noopener noreferrer" className="p-3 border border-brand-black/10 rounded-full hover:bg-brand-black hover:text-brand-white transition-all">
                   <Github size={20} />
                 </a>
-                <a href="#" className="p-3 border border-brand-black/10 rounded-full hover:bg-brand-black hover:text-brand-white transition-all">
+                <a href="https://www.linkedin.com/in/eniolamccartney/" target="_blank" rel="noopener noreferrer" className="p-3 border border-brand-black/10 rounded-full hover:bg-brand-black hover:text-brand-white transition-all">
                   <Linkedin size={20} />
                 </a>
               </div>
@@ -334,39 +335,36 @@ export default function App() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-brand-white/5 p-10 rounded-3xl backdrop-blur-sm border border-brand-white/10"
+              className="flex flex-col gap-8"
             >
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-widest font-bold text-brand-gray">Name</label>
+              {/* Flip Clock */}
+              <FlipClock />
+
+              {/* Compact Contact Form */}
+              <div className="bg-brand-white/5 p-6 rounded-2xl backdrop-blur-sm border border-brand-white/10">
+                <form className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
                     <input
                       type="text"
-                      placeholder="Jane Smith"
-                      className="w-full bg-transparent border-b border-brand-white/20 py-3 focus:border-brand-white outline-none transition-colors"
+                      placeholder="Name"
+                      className="w-full bg-transparent border-b border-brand-white/20 py-2 text-sm focus:border-brand-white outline-none transition-colors placeholder:text-brand-gray/50"
                     />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-xs uppercase tracking-widest font-bold text-brand-gray">Email</label>
                     <input
                       type="email"
-                      placeholder="jane@firm.com"
-                      className="w-full bg-transparent border-b border-brand-white/20 py-3 focus:border-brand-white outline-none transition-colors"
+                      placeholder="Email"
+                      className="w-full bg-transparent border-b border-brand-white/20 py-2 text-sm focus:border-brand-white outline-none transition-colors placeholder:text-brand-gray/50"
                     />
                   </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-widest font-bold text-brand-gray">Message</label>
-                  <textarea
-                    rows={4}
-                    placeholder="Tell me what you're working on..."
-                    className="w-full bg-transparent border-b border-brand-white/20 py-3 focus:border-brand-white outline-none transition-colors resize-none"
-                  ></textarea>
-                </div>
-                <button className="w-full bg-brand-white text-brand-black py-4 rounded-full font-bold uppercase tracking-widest hover:bg-brand-gray hover:text-brand-white transition-all">
-                  Send Message
-                </button>
-              </form>
+                  <input
+                    type="text"
+                    placeholder="What are you working on?"
+                    className="w-full bg-transparent border-b border-brand-white/20 py-2 text-sm focus:border-brand-white outline-none transition-colors placeholder:text-brand-gray/50"
+                  />
+                  <button className="w-full bg-brand-white text-brand-black py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brand-gray hover:text-brand-white transition-all">
+                    Send Message
+                  </button>
+                </form>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -379,8 +377,8 @@ export default function App() {
             © 2026 Eleventh House AI. All rights reserved.
           </p>
           <div className="flex space-x-8">
-            <a href="#" className="text-brand-gray hover:text-brand-white transition-colors"><Github size={20} /></a>
-            <a href="#" className="text-brand-gray hover:text-brand-white transition-colors"><Linkedin size={20} /></a>
+            <a href="https://github.com/rdmahpcengineer-gpu" target="_blank" rel="noopener noreferrer" className="text-brand-gray hover:text-brand-white transition-colors"><Github size={20} /></a>
+            <a href="https://www.linkedin.com/in/eniolamccartney/" target="_blank" rel="noopener noreferrer" className="text-brand-gray hover:text-brand-white transition-colors"><Linkedin size={20} /></a>
             <a href="#" className="text-brand-gray hover:text-brand-white transition-colors"><Twitter size={20} /></a>
           </div>
         </div>
