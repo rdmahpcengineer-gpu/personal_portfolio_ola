@@ -49,7 +49,7 @@ function FlipCard({ digit, flipKey }: FlipCardProps) {
     // Top flap falls down revealing new digit behind it
     tl.to(topFlap, {
       rotationX: -90,
-      duration: 0.35,
+      duration: 0.02,
       ease: "power2.in",
     });
 
@@ -58,7 +58,7 @@ function FlipCard({ digit, flipKey }: FlipCardProps) {
       bottomFlap,
       {
         rotationX: 0,
-        duration: 0.45,
+        duration: 0.02,
         ease: "bounce.out",
       },
       "-=0.08"
